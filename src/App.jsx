@@ -1,15 +1,20 @@
+import { BrowserRouter, Route, Routes } from 'react-router';
 import './App.css';
-import Footer from './components/Footer';
-import Header from './components/Header';
-import Main from './components/Main';
+
+import Home from './views/Home';
+import InstituicaoEnsino from './views/InstituicaoEnsino';
+import MainLayout from './layouts/MainLayout';
 
 function App() {
   return (
-    <>
-      <Header />
-      <Main />
-      <Footer />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<MainLayout />}>
+          <Route index element={<Home />} />
+          <Route path="/instituicaoensino" element={<InstituicaoEnsino />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
