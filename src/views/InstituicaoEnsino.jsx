@@ -2,9 +2,7 @@ import { useState } from 'react';
 import { Button, Col, Container, Form, Row, Table } from 'react-bootstrap';
 
 const InstituicaoEnsino = () => {
-  let [instituicoesEnsino, setInstituicoesEnsino] = useState([
-    { nome: 'IFPB - Campus Guarabira', codigo: '1000', qtMatricula: 600 },
-  ]);
+  let [instituicoesEnsino, setInstituicoesEnsino] = useState([]);
 
   let [nome, setNome] = useState('');
 
@@ -41,7 +39,7 @@ const InstituicaoEnsino = () => {
     <Container>
       <Row>
         <Col xs="7" lg="7">
-          <Form.Control type="email" placeholder="name@example.com" />
+          <Form.Control type="text" placeholder="Busca" />
         </Col>
         <Col>
           <Button onClick={buscarHandleClick}>Buscar</Button>

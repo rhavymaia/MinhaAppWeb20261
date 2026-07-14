@@ -4,6 +4,7 @@ import './App.css';
 import Home from './views/Home';
 import InstituicaoEnsino from './views/InstituicaoEnsino';
 import MainLayout from './layouts/MainLayout';
+import Aluno from './views/Aluno';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
           <Route path="/instituicaoensino" element={<InstituicaoEnsino />} />
+          <Route path="/aluno" element={<Aluno />} />
         </Route>
       </Routes>
     </BrowserRouter>
