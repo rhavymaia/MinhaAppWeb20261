@@ -8,9 +8,11 @@ pipeline {
 
     stages {
         stage('Preparando') {
-            echo "Iniciando processo de CI."
+            steps {
+                echo "Iniciando processo de CI."
+            }
         }
-        
+
         stage('Build Image') {
             steps {
                 sh "docker build -t $DOCKER_IMAGE:$VERSION ."
