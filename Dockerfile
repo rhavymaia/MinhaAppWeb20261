@@ -16,3 +16,18 @@ COPY . .
 
 # Build the project into optimized static assets (dist/ or build/)
 RUN npm run build
+
+FROM nginx:1.27-alpine
+
+# Remove default NGINX public files
+RUN rm -rf /usr/share/nginx/html/*
+
+# Copy static assets from the builder stage
+# Change "dist" to "build" if your setup uses Create React App instead of Vite
+COPY --from=builder /app/dist /usr/share/nginx/html
+
+# Expose port 80 to access the application outside the container
+EXPOSE 80
+
+# Start NGINX in the foreground
+CMD ["nginx", "-g", "daemon off;"]
