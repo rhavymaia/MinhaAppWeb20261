@@ -7,7 +7,9 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install project dependencies cleanly using 'npm ci'
-RUN npm ci
+RUN rm -f package-lock.json \
+  && npm install --package-lock-only \
+  && npm ci
 
 # Copy the remaining project source code
 COPY . .
