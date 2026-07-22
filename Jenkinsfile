@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        docker {
+        dockerContainer {
             image 'node:latest'
             args '-u root'  // Executa como root para evitar problemas de permissão
         }
