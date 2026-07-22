@@ -1,41 +1,20 @@
 pipeline {
-    agent {
-        dockerContainer {
-            image 'node:latest'
-        }
+    agent any
+
+    environment {
+        DOCKER_IMAGE = "minhaappweb20261"
+        VERSION = "latest"
     }
-    
+
     stages {
-        stage('Build') {
-            steps {
-                sh 'npm install'
-                sh 'npm run build'
-            }
+        stage('Preparando') {
+            echo "Iniciando processo de CI."
         }
         
-        stage('Test') {
+        stage('Build Image') {
             steps {
-                sh 'npm test'
+                sh "docker build -t $DOCKER_IMAGE:$VERSION ."
             }
-        }
-        
-        stage('Deploy') {
-            steps {
-                echo 'Deploying application...'
-                // Adicione aqui os comandos para deploy
-            }
-        }
-    }
-    
-    post {
-        always {
-            echo 'Pipeline concluída - limpeza pode ser feita aqui'
-        }
-        success {
-            echo 'Pipeline executada com sucesso!'
-        }
-        failure {
-            echo 'Pipeline falhou'
         }
     }
 }
